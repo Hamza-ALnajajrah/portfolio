@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Safwan Al-Shamayleh - Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --badge-bg: #0369a1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar Style */
+        .sidebar {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+            text-align: center;
+        }
+
+        .profile-img-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            overflow: hidden;
+            border: 3px solid var(--accent-color);
+            background-color: var(--border-color);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            width: 20px;
+        }
+
+        .section-title-sm {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 0.2rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .lang-list, .skills-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .lang-list li, .skills-list li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Main Content Style */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-header i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .summary-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.9rem;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .duration {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-details {
+            list-style: square;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .job-details li {
+            margin-bottom: 0.4rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .info-box {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-box p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside class="sidebar">
+            <div class="profile-img-container">
+                <!-- قم بتعديل مسار أو اسم الصورة هنا -->
+                <img src="C:\Users\User\Desktop\Mohammad Safwan Web\Mohammad.png" alt="Mohammad Safwan Al-Shamayleh">
+            </div>
+            <h1 class="name">Mohammad Safwan Al-Shamayleh</h1>
+            <p class="title">Seeking a Suitable Job Opportunity</p>
+
+            <ul class="contact-info">
+                <li><i class="fa-solid fa-phone"></i> 0795031564</li>
+                <li><i class="fa-solid fa-location-dot"></i> Karak, Jordan</li>
+            </ul>
+
+            <h3 class="section-title-sm">Languages</h3>
+            <ul class="lang-list">
+                <li><span>Arabic</span> <strong style="color:var(--text-primary)">Native</strong></li>
+                <li><span>English</span> <strong style="color:var(--text-primary)">Good</strong></li>
+            </ul>
+
+            <h3 class="section-title-sm">Key Skills</h3>
+            <ul class="skills-list">
+                <li>Microsoft Word</li>
+                <li>Microsoft Excel</li>
+                <li>Customer Service</li>
+                <li>Effective Communication</li>
+                <li>Teamwork</li>
+                <li>Work Under Pressure</li>
+                <li>Time Management</li>
+                <li>Fast Learner</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <!-- Summary -->
+            <section class="card" style="text-align: left;">
+                <div class="card-header">
+                    <i class="fa-solid fa-address-card"></i>
+                    <h2>Professional Summary</h2>
+                </div>
+                <p class="summary-text">
+                    A Geography graduate with practical experience in customer service and microfinance. I excel in effective communication and teamwork, with a commitment to developing my skills and achieving the best results.
+                </p>
+            </section>
+
+            <!-- Education -->
+            <section class="card" style="text-align: left;">
+                <div class="card-header">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h2>Education</h2>
+                </div>
+                <div>
+                    <h3 class="job-title">Bachelor's Degree in Geography</h3>
+                    <p class="duration">Mutah University</p>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="card" style="text-align: left;">
+                <div class="card-header">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h2>Work Experience</h2>
+                </div>
+                <div class="timeline">
+                    <!-- Job 1 -->
+                    <div class="timeline-item">
+                        <h3 class="job-title">Zain Company</h3>
+                        <p class="duration"><i class="fa-regular fa-clock"></i> Duration: 1 Year</p>
+                        <ul class="job-details">
+                            <li>Interacting with customers and providing required services.</li>
+                            <li>Following up on customer inquiries and requests.</li>
+                            <li>Adhering to work procedures and company policies.</li>
+                            <li>Working within a team and handling work pressure.</li>
+                        </ul>
+                    </div>
+                    <!-- Job 2 -->
+                    <div class="timeline-item">
+                        <h3 class="job-title">National Microfinance Bank</h3>
+                        <p class="duration"><i class="fa-regular fa-clock"></i> Duration: 1 Year & 7 Months</p>
+                        <ul class="job-details">
+                            <li>Direct interaction with customers and delivering required services.</li>
+                            <li>Following up on daily transactions and tasks.</li>
+                            <li>Organizing and auditing data and documents.</li>
+                            <li>Adhering to company policies and procedures.</li>
+                            <li>Working within a team and handling work pressure.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional Info -->
+            <section class="card" style="text-align: left;">
+                <div class="card-header">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <h2>Additional Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <p><i class="fa-solid fa-check-circle" style="color:var(--accent-color)"></i> Possessing a strong sense of responsibility & problem-solving skills.</p>
+                    </div>
+                    <div class="info-box">
+                        <p><i class="fa-solid fa-check-circle" style="color:var(--accent-color)"></i> Always striving to develop skills and achieve best outcomes.</p>
+                    </div>
+                    <div class="info-box">
+                        <p><i class="fa-solid fa-check-circle" style="color:var(--accent-color)"></i> High dedication at work and punctuality.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
